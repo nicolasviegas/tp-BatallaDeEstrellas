@@ -1,0 +1,24 @@
+import personajes.*
+import combate.*
+
+test "El equipo 1 esta formado por Toro y tulipan" {
+	assert.that(combate.integrantesDelEquipo1() == [toro,tulipan])
+}
+
+test "Tulipan le saca la mitad de energia a pocardo" {
+	tulipan.lucharManoAMano(pocardo)
+	assert.that(pocardo.energiaInicial()==2800)
+}
+
+test "Toro le roba 2 items a los enemigos" {
+	combate.luchar()
+	assert.that(toro.cantidadDeItems()==2)
+}
+
+test "Luego de luchar el equipo 2 queda con mas de 11500 de energia" {
+	combate.luchar()
+	assert.that(combate.energiaDelEquipo(combate.integrantesDelEquipo2()) > 11500)
+}
+test "El ganador de la batalla es el Equipo 1" {
+	assert.that(combate.equipoVictorioso()==["No se metan con el toro", "Hora de cuidar a las plantas"])
+}
